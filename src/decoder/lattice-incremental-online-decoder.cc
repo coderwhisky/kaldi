@@ -98,7 +98,7 @@ typename LatticeIncrementalOnlineDecoderTpl<FST>::BestPathIterator LatticeIncrem
     // it a fatal error for now.
     KALDI_WARN << "No final token found.";
   }
-  if (final_cost_out == NULL)
+  if (final_cost_out != NULL)
     *final_cost_out = best_final_cost;
   return BestPathIterator(best_tok, this->NumFramesDecoded() - 1);
 }
@@ -144,7 +144,7 @@ typename LatticeIncrementalOnlineDecoderTpl<FST>::BestPathIterator LatticeIncrem
 template class LatticeIncrementalOnlineDecoderTpl<fst::Fst<fst::StdArc> >;
 template class LatticeIncrementalOnlineDecoderTpl<fst::VectorFst<fst::StdArc> >;
 template class LatticeIncrementalOnlineDecoderTpl<fst::ConstFst<fst::StdArc> >;
-template class LatticeIncrementalOnlineDecoderTpl<fst::GrammarFst>;
-
+template class LatticeIncrementalOnlineDecoderTpl<fst::ConstGrammarFst >;
+template class LatticeIncrementalOnlineDecoderTpl<fst::VectorGrammarFst >;
 
 } // end namespace kaldi.
